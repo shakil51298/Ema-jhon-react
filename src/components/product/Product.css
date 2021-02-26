@@ -1,0 +1,23 @@
+.product{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+.product img{
+    padding: 10px;
+}
+.pro-name{
+    color: rgb(39, 89, 230);
+    font-weight: 400;
+    padding-left: 5px;
+}
+.add-to-cart-btn{
+    background: goldenrod;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+    border: 1px soilid rgb(179, 172, 172);
+    padding: 5px;
+}

@@ -20,11 +20,12 @@ const Shop = () => {
         <div className="shop">
             <div className="product-container">
                     {
-                        pro.map(product => <Product  handler={addToCartHanlder}  product={product}> </Product>)
+                        pro.map(product => <Product  
+                            handler={addToCartHanlder} showAddtoCart={true} product={product}> </Product>)
                     }
             </div>
             <div className="cart-container">
-                <Cart  cart={cart}></Cart>
+                <Cart   cart={cart}></Cart>
                 <Span></Span>
             </div>
             

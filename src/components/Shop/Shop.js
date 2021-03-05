@@ -3,6 +3,7 @@ import './shop.css';
 import fakeData from '../../fakeData';
 import Product from '../product/Product';
 import Cart from '../Cart/Cart';
+import { addToDatabaseCart } from '../../utilities/databaseManager';
 
 
 const Shop = () => {
@@ -14,6 +15,10 @@ const Shop = () => {
     const addToCartHanlder = (product) =>{
         const NewCart = [...cart, product];
         setCart(NewCart);
+        // set to data manager in local storage;
+        const total = NewCart.filter(pd => pd.key === product.key)
+        const count = total.length;
+        addToDatabaseCart(product.key,count)
     }
     
     return (

@@ -38,7 +38,6 @@ const Shop = () => {
         </div>
     );
 };
-
 function Span(props) {
     return <span></span>
 }

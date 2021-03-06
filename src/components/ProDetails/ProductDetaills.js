@@ -16,3 +16,6 @@ const ProductDetaills = () => {
 };
 
 export default ProductDetaills;
+
+
+

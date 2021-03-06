@@ -26,8 +26,9 @@ const Shop = () => {
             <div className="product-container">
                     {
                         pro.map(product => <Product  
-                            handler={addToCartHanlder} showAddtoCart={true} product={product}> </Product>)
-                    }
+                            handler={addToCartHanlder} showAddtoCart={true} product={product} key={product.key}> </Product>)
+                   
+                   }
             </div>
             <div className="cart-container">
                 <Cart   cart={cart}></Cart>
@@ -39,6 +40,6 @@ const Shop = () => {
 };
 
 function Span(props) {
-    return <span>0</span>
+    return <span></span>
 }
 export default Shop;

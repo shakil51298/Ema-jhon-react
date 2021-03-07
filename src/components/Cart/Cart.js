@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Cart.css'
 
 const Cart = (props) => {
     const cart = props.cart;
+    // console.log(cart);
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        total = total + product.price
+        total = total + product.price * product.quantity;
+
     }
     let shipping = 0;
     if (total > 35) {
@@ -16,7 +17,7 @@ const Cart = (props) => {
     else if (total > 15){
         shipping = 12.99
     }
-    else if(total > 0 ){
+    else if(total > 0 ){  
         shipping = 12.99
     }
     // const tax = Math.round(total/10)
@@ -35,8 +36,10 @@ const Cart = (props) => {
                 <p>Estimated TAX :{formateNumber(tax)} </p>
                 <p>Product Price: {formateNumber(total)}</p>
                 <p>Total: {formateNumber(total + shipping + tax)}</p>
+                {
+                    props.children
+                }
             </div>
-            <Link to='/review'><button className='add-to-cart-btn'>Review your order</button> </Link>
         </div>
     );
 };

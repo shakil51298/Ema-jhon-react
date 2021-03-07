@@ -2,7 +2,9 @@ import React from 'react';
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { Link, Route, Router, Switch } from 'react-router-dom';
+import Fuck from '../Fuck/Fuck';
+
 
 const Product = (props) => {
     const {img,name,seller,stock,price,key} = props.product;
@@ -13,6 +15,7 @@ const Product = (props) => {
             <div>
                 <img src={img} alt=""/>
             </div>
+                
             <div>
             <h4 className="pro-name"><Link to={'/product/'+key}>{name}</Link></h4>
                 <p><small>by:{seller}</small></p>
@@ -23,6 +26,7 @@ const Product = (props) => {
             }
             </div>
             </div>
+            
         </div>
     );
 };

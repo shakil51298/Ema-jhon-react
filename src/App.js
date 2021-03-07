@@ -10,7 +10,7 @@ import Notfound from './components/Notfound/Notfound';
 import ProductDetaills from './components/ProDetails/ProductDetaills';
 import Price from './components/Price/Price';
 import Product from './components/product/Product';
-
+import Fuck from './components/Fuck/Fuck';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Header/>
         <Switch>
           <Route path="/shop">
-            <Shop></Shop>
+            <Shop/>                
           </Route>
 
           <Route path="/review">
@@ -39,7 +39,7 @@ function App() {
           <Route path="/product/:productkey">
             <ProductDetaills/>
           </Route>
-          
+           
           <Route path="*">
             <Notfound/>
           </Route>

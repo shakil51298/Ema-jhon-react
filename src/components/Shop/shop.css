@@ -1,10 +1,10 @@
-.shop{
+.shopAndReview{
     display: flex;
     /* flex-flow: ; */
     /* flex-wrap: ; */
     /* flex-direction: ; */
 }
-.product-container{
+.shopAndReview-container{
     /* flex: 1 1 20px; */
     width: 70%;
     margin-left: 40px;

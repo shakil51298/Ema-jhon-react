@@ -3,7 +3,6 @@ import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Link, Route, Router, Switch } from 'react-router-dom';
-import Fuck from '../Fuck/Fuck';
 
 
 const Product = (props) => {

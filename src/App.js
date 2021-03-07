@@ -10,7 +10,6 @@ import Notfound from './components/Notfound/Notfound';
 import ProductDetaills from './components/ProDetails/ProductDetaills';
 import Price from './components/Price/Price';
 import Product from './components/product/Product';
-import Fuck from './components/Fuck/Fuck';
 
 
 function App() {

@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../Review_Item/ReviewItem';
 import happyImage from '../../images/giphy.gif'
+import { useHistory } from 'react-router';
 
 const Review = () => {
     const [cart,SetCart] = useState([])
     const [orderPlaced,SetOrderPlaced] = useState(false);
    
-    const handlePLaceOrder =()=>{
-        SetCart([]);
-        SetOrderPlaced(true);
-        processOrder();
-
-        console.log('order placed',);
+    const history = useHistory()
+    const handleProceedCheckOut =()=>{
+        history.push('/shipment')
+        // SetCart([]);
+        // SetOrderPlaced(true);
+        // processOrder();
     }
    
     useEffect(()=>{
@@ -60,7 +61,7 @@ const Review = () => {
            </div>
            <div className="cart-container">
                <Cart cart={cart}>
-                   <button className="add-to-cart-btn" onClick={handlePLaceOrder}>Place Order</button>
+                   <button className="add-to-cart-btn" onClick={handleProceedCheckOut}>Proceed Check Out</button>
                </Cart>
                 {/* <Cart   cart={cart}></Cart> */}
                 

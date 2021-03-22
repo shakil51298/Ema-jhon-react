@@ -9,6 +9,7 @@ const ReviewItem = (props) => {
         padding:'15px',
         margin:'5px'
     }
+    document.title ="Review Producs"
     return (
         <div style={styles}>
             <img src={img} alt=""/>

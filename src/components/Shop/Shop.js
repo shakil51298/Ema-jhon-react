@@ -5,14 +5,18 @@ import Product from '../product/Product';
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core';
 
 
 const Shop = () => {
-    // console.log(fakeData);
+
     const first10 = fakeData.slice(0,10) 
-    const [pro,setPro] = useState(first10)
+    const [products,setPro] = useState([])
     const [cart,setCart] = useState([])
     
+    useEffect(()=>{
+        setPro(first10)
+    },[])
     useEffect(()=>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
@@ -49,14 +53,19 @@ const Shop = () => {
         // const total = NewCart.filter(pd => pd.key === product.key)
         // const count = total.length;
         addToDatabaseCart(product.key,count)
-    }
-    
+        
+    }   
+    document.title ="Ema Jhon"
     return (
         <div className="shopAndReview">
+            
             <div className="shopAndReview-container" style={{padding:'10px',margin:'5px'}} >
+            {
+                products.length === 0 && <h1>Loding.....</h1>
+            }
                     {
-                        pro.map(product => <Product  
-                            handler={addToCartHanlder} showAddtoCart={true} product={product} key={product.key}> </Product>)
+                        products.map(product => <Product  
+                            handler={addToCartHanlder} showAddtoCart={true} products={product} key={product.key}> </Product>)
                    }
             </div>
             <div className="cart-container">

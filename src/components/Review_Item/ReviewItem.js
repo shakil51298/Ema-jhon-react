@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewItem = (props) => {
-    const {name,category,seller,price,wholePrice,img,key,quantity,startCount,stock,url,priceFraction} = props.product
+    const {name,category,seller,price,wholePrice,img,key,quantity,url} = props.product
     // console.log(props.product);
     
     const styles ={
@@ -20,7 +20,7 @@ const ReviewItem = (props) => {
             <h5>{seller}</h5>
             <h5>{wholePrice}</h5>
             <h5>seller: {seller}</h5>
-            <a href={url} target='_blank'>Link</a>
+            <a href={url} target='_blank' rel="link">Link</a>
             <br/>
             <br/>
             <button className="add-to-cart-btn"

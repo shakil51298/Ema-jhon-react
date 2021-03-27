@@ -1,15 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Shop from './components/Shop/Shop';
 import { createContext, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Review from './components/Revidew/Review';
 import Inventory from './components/inventory/Inventory';
 import Notfound from './components/Notfound/Notfound';
 import ProductDetaills from './components/ProDetails/ProductDetaills';
-import Price from './components/Price/Price';
-import Product from './components/product/Product';
 import LogIn from './components/LogIn/LogIn';
 import Shipment from './components/shipment/Shipment';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';

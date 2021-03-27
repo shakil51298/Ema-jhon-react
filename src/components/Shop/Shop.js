@@ -5,7 +5,7 @@ import Product from '../product/Product';
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
-import { CircularProgress } from '@material-ui/core';
+// import { CircularProgress } from '@material-ui/core';
 
 
 const Shop = () => {
@@ -16,7 +16,7 @@ const Shop = () => {
     
     useEffect(()=>{
         setPro(first10)
-    },[])
+    },[first10])
     useEffect(()=>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
@@ -77,7 +77,7 @@ const Shop = () => {
         </div>
     );
 };
-function Span(props) {
-    return <span></span>
-}
+// function Span(props) {
+//     return <span></span>
+// }
 export default Shop;

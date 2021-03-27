@@ -1,6 +1,6 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData';
-import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../Review_Item/ReviewItem';
 import happyImage from '../../images/giphy.gif'
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const Review = () => {
     const [cart,SetCart] = useState([])
-    const [orderPlaced,SetOrderPlaced] = useState(false);
+    const [orderPlaced] = useState(false);
    
     const history = useHistory()
     const handleProceedCheckOut =()=>{

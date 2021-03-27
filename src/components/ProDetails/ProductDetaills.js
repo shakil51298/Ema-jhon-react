@@ -1,10 +1,8 @@
-import { CircularProgress } from '@material-ui/core';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import fakeData from '../../fakeData';
-import Product from '../product/Product';
 
 const ProductDetaills = () => {
     let {productkey} = useParams();
@@ -15,7 +13,7 @@ const ProductDetaills = () => {
     useEffect(()=>{
         setPds(fakeData.find(pd => pd.key === productkey))
         setSpnniner(false)
-    })
+    },[])
     document.title ="product details"
     return (
         <div>

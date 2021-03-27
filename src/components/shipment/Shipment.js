@@ -4,7 +4,7 @@ import { userContext } from '../../App';
 import "./Shipment.css"
 
 const Shipment = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(userContext)
+    const [loggedInUser] = useContext(userContext)
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
 

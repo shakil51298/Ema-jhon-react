@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from '../../fakeData';
 import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../Review_Item/ReviewItem';
@@ -13,22 +12,20 @@ const Review = () => {
     const history = useHistory()
     const handleProceedCheckOut =()=>{
         history.push('/shipment')
-        // SetCart([]);
-        // SetOrderPlaced(true);
-        // processOrder();
     }
    
     useEffect(()=>{
         const saveData = getDatabaseCart();
-        // collecting key from an object (Object.keys)
-        const productkeys = Object.keys(saveData);
-        const cartProducts = productkeys.map(key =>{
-             const product = fakeData.find(pd => pd.key === key);
-             product.quantity = saveData[key]
-            return product
-            });
-            SetCart(cartProducts)
+        const productskeys = Object.keys(saveData);
+        fetch('http://localhost:3000/productFromKeys',{
+            method:"POST",
+            body:JSON.stringify(productskeys),
+            headers:{'Content-type' : 'application/json'}
+        })
+        .then(res => res.json())
+        .then(data => SetCart(data))
     },[])
+    
     const removerBtnHandler = (pdKEy)=>{
             // console.log('remove clicked',pdKEy);
             //remove the produc from review list/pages

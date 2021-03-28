@@ -8,9 +8,6 @@ import { userContext } from '../../App';
 
 const Header = () => {
     const [ setLoggedInUser] = useContext(userContext)
-    const handleLogOut = () =>{
-        setLoggedInUser([])
-    }
 
     return (
         <div className="header">
@@ -19,7 +16,7 @@ const Header = () => {
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
                 <Link to="/inventory">Manage Inventory here</Link>
-                <button onClick={handleLogOut}> sign out</button>
+                <button onClick={() => setLoggedInUser({})}> sign out</button>
             </nav>
 
             <div className="inputBox">

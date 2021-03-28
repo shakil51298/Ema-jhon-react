@@ -10,24 +10,26 @@ import { Link } from 'react-router-dom';
 
 const Shop = () => {
 
-    const first10 = fakeData.slice(0,10) 
+    // const first10 = fakeData.slice(0,10) 
     const [products,setPro] = useState([])
     const [cart,setCart] = useState([])
     
     useEffect(()=>{
-        setPro(first10)
-    },[first10])
+        fetch('http://localhost:5000/products')
+        .then(res => res.json())
+        .then(data => setPro(data))
+    },[])
     useEffect(()=>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        const PriviousCart = productKeys.map(existingKey => {
-
-            const product = fakeData.find(pd=> pd.key === existingKey);
-            product.quantity = savedCart[existingKey]
-            // console.log(existingKey, savedCart[existingKey]);
-            return product;
-        })
-        // console.log(productKeys);
+        if(products.length){
+            const PriviousCart = productKeys.map(existingKey => {
+                const product = fakeData.find(pd=> pd.key === existingKey);
+                product.quantity = savedCart[existingKey]
+                return product;
+            })
+            setCart(PriviousCart)
+        }
     },[])
     const addToCartHanlder = (product) =>{
 

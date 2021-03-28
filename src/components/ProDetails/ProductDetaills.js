@@ -2,18 +2,21 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fakeData from '../../fakeData';
 
 const ProductDetaills = () => {
     let {productkey} = useParams();
     const [spninner , setSpnniner ] = useState(true)
 
-    const [pds , setPds ] = useState([])
+    const [pds , setPds ] = useState({})
     const {img, key , name , price, seller , stock} = pds
     useEffect(()=>{
-        setPds(fakeData.find(pd => pd.key === productkey))
+        const url = `http://localhost:5000/product/${productkey}`
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setPds(data))
+        // setPds(fakeData.find(pd => pd.key === productkey))
         setSpnniner(false)
-    },[])
+    },[productkey])
     document.title ="product details"
     return (
         <div>

@@ -9,7 +9,7 @@ const ReviewItem = (props) => {
         padding:'15px',
         margin:'5px'
     }
-    document.title ="Review Producs"
+    document.title ="Review Products"
     return (
         <div style={styles}>
             <img src={img} alt=""/>
@@ -20,7 +20,7 @@ const ReviewItem = (props) => {
             <h5>{seller}</h5>
             <h5>{wholePrice}</h5>
             <h5>seller: {seller}</h5>
-            <a href={url} target='_blank' rel="link">Link</a>
+            <a href={url} target='_blank' rel="shakil">Link</a>
             <br/>
             <br/>
             <button className="add-to-cart-btn"

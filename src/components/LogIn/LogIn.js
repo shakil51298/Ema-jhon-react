@@ -18,7 +18,7 @@ function LogIn() {
 
   initializeLoginFramework();
 
-  const [loggedInUser, setLoggedInUser ] = useContext(userContext);
+  const [ setLoggedInUser ] = useContext(userContext);
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };

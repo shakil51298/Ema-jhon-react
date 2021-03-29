@@ -12,7 +12,7 @@ const Shop = () => {
 
     // const first10 = fakeData.slice(0,10) 
     const [products,setPro] = useState([])
-    const [cart,setCart] = useState([])
+    const [cart,SetCart] = useState([])
     
     useEffect(()=>{
         fetch('http://localhost:5000/products')
@@ -20,16 +20,17 @@ const Shop = () => {
         .then(data => setPro(data))
     },[])
     useEffect(()=>{
-        const savedCart = getDatabaseCart();
-        const productKeys = Object.keys(savedCart);
-        if(products.length){
-            const PriviousCart = productKeys.map(existingKey => {
-                const product = fakeData.find(pd=> pd.key === existingKey);
-                product.quantity = savedCart[existingKey]
-                return product;
-            })
-            setCart(PriviousCart)
-        }
+        const saveData = getDatabaseCart();
+        const productskeys = Object.keys(saveData);
+       fetch('http://localhost:5000/productFromKeys',{
+        method: 'POST',
+        body: JSON.stringify(productskeys),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then(res => res.json())
+      .then(data =>SetCart(data))
     },[])
     const addToCartHanlder = (product) =>{
 
@@ -50,7 +51,7 @@ const Shop = () => {
             NewCart = [...cart,product];
         }
         // const count = sameProduct.length;
-        setCart(NewCart);
+        SetCart(NewCart);
         // set to data manager in local storage;
         // const total = NewCart.filter(pd => pd.key === product.key)
         // const count = total.length;

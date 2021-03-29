@@ -6,6 +6,8 @@ import happyImage from '../../images/giphy.gif'
 import { useHistory } from 'react-router';
 
 const Review = () => {
+
+    
     const [cart,SetCart] = useState([])
     const [orderPlaced] = useState(false);
    
@@ -17,14 +19,17 @@ const Review = () => {
     useEffect(()=>{
         const saveData = getDatabaseCart();
         const productskeys = Object.keys(saveData);
-        fetch('http://localhost:3000/productFromKeys',{
-            method:"POST",
-            body:JSON.stringify(productskeys),
-            headers:{'Content-type' : 'application/json'}
-        })
-        .then(res => res.json())
-        .then(data => SetCart(data))
+       fetch('http://localhost:5000/productFromKeys',{
+        method: 'POST',
+        body: JSON.stringify(productskeys),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then(res => res.json())
+      .then(data =>SetCart(data))
     },[])
+       
     
     const removerBtnHandler = (pdKEy)=>{
             // console.log('remove clicked',pdKEy);
@@ -43,25 +48,23 @@ const Review = () => {
     return (
         <div className="shopAndReview">
            <div className="shopAndReview-container" style={{padding:'10px',margin:'5px'}}>
-                {
-                    cart.map(pd =>  <ReviewItem 
-                    product={pd}
-                    key={pd.key}
-                    removehnadler={removerBtnHandler}
-                    >
-                    </ReviewItem>)
-                }
-                {
-                    thankyou //image
-                }
+                    {
+                        cart.map(pd =>  <ReviewItem 
+                        product={pd}
+                        key={pd.key}
+                        removehnadler={removerBtnHandler}
+                        >
+                        </ReviewItem>)
+                    }
+                    {
+                        thankyou //image
+                    }
                 
            </div>
            <div className="cart-container">
                <Cart cart={cart}>
                    <button className="add-to-cart-btn" onClick={handleProceedCheckOut}>Proceed Check Out</button>
                </Cart>
-                {/* <Cart   cart={cart}></Cart> */}
-                
             </div>
         </div>
     );

@@ -1,9 +1,9 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyBzyxsIxMJtIDZtJr15CLPl35i5b1Nv9N8",
-  authDomain: "fir-first-project-12.firebaseapp.com",
-  projectId: "fir-first-project-12",
-  storageBucket: "fir-first-project-12.appspot.com",
-  messagingSenderId: "336812423478",
-  appId: "1:336812423478:web:c4835ebbaddd5fd2281b97"
-};
+  apiKey: "AIzaSyABDi-p65tKveYmZeVH4pkYotm4JXwQVIA",
+  authDomain: "ema-jhon-final-21.firebaseapp.com",
+  projectId: "ema-jhon-final-21",
+  storageBucket: "ema-jhon-final-21.appspot.com",
+  messagingSenderId: "999500117146",
+  appId: "1:999500117146:web:f3a444b5ce6152bd7b1b23"
+}
 export default firebaseConfig;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import { userContext } from '../../App';
-import { initializeLoginFramework, handleGoogleSignIn, handleSignOut, handleFbSignIn, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './LoginManager';
+import { initializeLoginFramework, handleGoogleSignIn, handleSignOut, handleFbSignIn, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './loginManager';
 
 
 
-function LogIn() {
+function Login() {
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignedIn: false,
@@ -18,7 +18,7 @@ function LogIn() {
 
   initializeLoginFramework();
 
-  const [ setLoggedInUser ] = useContext(userContext);
+  const [loggedInUser, setLoggedInUser ] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -121,4 +121,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default Login;

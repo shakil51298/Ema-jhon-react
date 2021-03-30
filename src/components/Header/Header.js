@@ -1,33 +1,22 @@
 import React, { useContext } from 'react';
 import logo from '../../images/logo.png';
-import './header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import './Header.css';
 import { Link } from 'react-router-dom';
-import { userContext } from '../../App';
+import { UserContext } from '../../App';
 
 const Header = () => {
-    const [ setLoggedInUser] = useContext(userContext)
-
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <div className="header">
-            <img src={logo} alt="something"></img>
+            <img src={logo} alt=""/>
             <nav>
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
-                <Link to="/inventory">Manage Inventory here</Link>
-                <button onClick={() => setLoggedInUser({})}> sign out</button>
+                <Link to="/inventory">Manage Inventory</Link>
+                <button onClick={() => setLoggedInUser({})}>Sign out</button>
             </nav>
-
-            <div className="inputBox">
-                <input type="password"></input> 
-                <span className="cart-icon">
-                <FontAwesomeIcon icon={faShoppingCart}/> 
-                </span>
-            </div>
         </div>
     );
 };
-
 
 export default Header;

@@ -16,6 +16,7 @@ import Shipment from './components/Shipment/Shipment';
 import Login from './components/Login/Login';
 import { createContext } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const UserContext = createContext();
 
@@ -27,6 +28,9 @@ function App(props) {
       <Router>
         <Header></Header>
         <Switch>
+          <Route path="/shop/:searchValue">
+            <Shop></Shop>
+          </Route>
           <Route path="/shop">
             <Shop></Shop>
           </Route>

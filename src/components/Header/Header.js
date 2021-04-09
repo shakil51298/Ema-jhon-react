@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../images/logo.png';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+   
+
+
     return (
         <div className="header">
             <img src={logo} alt=""/>

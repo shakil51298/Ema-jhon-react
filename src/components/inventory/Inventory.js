@@ -15,7 +15,7 @@ const Inventory = () => {
     return (
         <div>
             <form action="">
-                <p><span>Name: </span><input type="text"/></p>
+                <p className="text-danger"><span >Name: </span><input type="text"/></p>
                 <p><span>price: </span><input type="text"/></p>
                 <p><span>Quantity:</span><input type="text"/></p>
                 <p><span>Product Image</span><input type="file"/></p>

@@ -4,20 +4,31 @@ import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [search, setSearch] = useState('')
+    console.log(search);
 
+    const handleSearch = (e) =>{
+        setSearch(e.target.value)
+    }
+
+    const submitSearch = (e) =>{
+        
+        e.preventDefault();
+    }
     useEffect(()=>{
-        fetch('https://tranquil-citadel-79174.herokuapp.com/products')
+        fetch('https://tranquil-citadel-79174.herokuapp.com/products?search='+search)
         .then(res => res.json())
         .then(data => {
             setProducts(data)
         })
         
-    }, [])
+    }, [search])
     
     useEffect(()=>{
         const savedCart = getDatabaseCart();
@@ -54,7 +65,11 @@ const Shop = () => {
 
     return (
         <div className="twin-container">
-            <div className="product-container">
+            <div className="product-container" >
+            <form action="" onSubmit={submitSearch}>
+                <input type="text" placeholder="search " onBlur={handleSearch}/>
+                <input type="reset" value="clear"/>
+            </form>
             {
                 products.length === 0 && <h1>Loding.....</h1>
             }
@@ -74,7 +89,6 @@ const Shop = () => {
                     </Link>
                </Cart>
             </div>
-            
         </div>
     );
 };

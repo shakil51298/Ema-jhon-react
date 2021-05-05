@@ -8,8 +8,8 @@ const PaymentGatWay = ({handlePaymentSuccess}) => {
    
     const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
     return (
-        <div>
-            <h3>this is Payment Section</h3>
+        <div className="mt-3 border p-3">
+            <h3>Payment</h3>
             <Elements stripe={stripePromise}>
                 <SplitForm handlePaymentSuccess = {handlePaymentSuccess}/>
                 {/* <SimpleCardForm/> */}

@@ -24,7 +24,7 @@ const Header = () => {
                     </Link>
                 }
                 {
-                    loggedInUser.isSignedIn && <Link className="text-white ml-3" to="/inventory">{loggedInUser.name || loggedInUser.email}</Link>
+                    loggedInUser.isSignedIn && <Link className="text-white ml-3" to="/login">{loggedInUser.name || loggedInUser.email}</Link>
                 }
             </nav>
         </div>

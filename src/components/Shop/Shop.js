@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import './Shop.css';
-import Product from '../Product/Product';
+import './shop.css';
+import Product from '../product/Product'
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link, useParams } from 'react-router-dom';
@@ -74,7 +74,7 @@ const Shop = () => {
                 products.length === 0 && <h1>Loding.....</h1>
             }
                 {
-                    products.map(pd => <Product 
+                    products.map(pd => <Product
                         key={pd.key}
                         showAddToCart={true}
                         handleAddProduct = {handleAddProduct}

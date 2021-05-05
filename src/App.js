@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import Shop from './components/Shop/Shop';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Review from './components/Review/Review';
-import Inventory from './components/Inventory/Inventory';
-import NotFound from './components/NotFound/NotFound';
-import ProductDetail from './components/ProductDetail/ProductDetail';
-import Shipment from './components/Shipment/Shipment';
-import Login from './components/Login/Login';
+import Shop from './components/Shop/Shop'
 import { createContext } from 'react';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header/Header';
+import Review from './components/Review/Review';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Inventory from './components/inventory/Inventory';
+import Login from './components/LogIn/LogIn';
+import Shipment from './components/shipment/Shipment';
+import ProductDetail from './components/ProductDetail/ProductDetail';
+import NotFound from './components/Notfound/Notfound';
 
 export const UserContext = createContext();
 
@@ -35,10 +36,10 @@ function App(props) {
             <Shop></Shop>
           </Route>
           <Route path="/review">
-            <Review></Review>
+            <Review ></Review>
           </Route>
           <PrivateRoute path="/inventory">
-            <Inventory></Inventory>
+            <Inventory ></Inventory>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>

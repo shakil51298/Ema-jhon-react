@@ -18,20 +18,20 @@ function Login() {
 
   initializeLoginFramework();
 
-  const [loggedInUser, setLoggedInUser ] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
 
   const googleSignIn = () => {
-      handleGoogleSignIn()
+    handleGoogleSignIn()
       .then(res => {
         handleResponse(res, true);
       })
   }
 
   const fbSignIn = () => {
-      handleFbSignIn()
+    handleFbSignIn()
       .then(res => {
         handleResponse(res, true);
       })
@@ -39,49 +39,49 @@ function Login() {
   }
 
   const signOut = () => {
-      handleSignOut()
+    handleSignOut()
       .then(res => {
-          handleResponse(res, false);
+        handleResponse(res, false);
       })
   }
 
-  const handleResponse = (res, redirect) =>{
+  const handleResponse = (res, redirect) => {
     setUser(res);
     setLoggedInUser(res);
-    if(redirect){
-        history.replace(from);
+    if (redirect) {
+      history.replace(from);
     }
   }
 
   const handleBlur = (e) => {
     let isFieldValid = true;
-    if(e.target.name === 'email'){
+    if (e.target.name === 'email') {
       isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
     }
-    if(e.target.name === 'password'){
+    if (e.target.name === 'password') {
       const isPasswordValid = e.target.value.length > 6;
-      const passwordHasNumber =  /\d{1}/.test(e.target.value);
+      const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
     }
-    if(isFieldValid){
-      const newUserInfo = {...user};
+    if (isFieldValid) {
+      const newUserInfo = { ...user };
       newUserInfo[e.target.name] = e.target.value;
       setUser(newUserInfo);
     }
   }
   const handleSubmit = (e) => {
-    if(newUser && user.email && user.password){
+    if (newUser && user.email && user.password) {
       createUserWithEmailAndPassword(user.name, user.email, user.password)
-      .then(res => {
-        handleResponse(res, true);
-      })
+        .then(res => {
+          handleResponse(res, true);
+        })
     }
 
-    if(!newUser && user.email && user.password){
+    if (!newUser && user.email && user.password) {
       signInWithEmailAndPassword(user.email, user.password)
-      .then(res => {
-        handleResponse(res, true);
-      })
+        .then(res => {
+          handleResponse(res, true);
+        })
     }
     e.preventDefault();
   }
@@ -89,34 +89,37 @@ function Login() {
 
 
   return (
-    <div style={{textAlign: 'center'}}>
-      { user.isSignedIn ? <button onClick={signOut}>Sign Out</button> :
-        <button onClick={googleSignIn}>Sign In With google</button>
-      }
-      <br/>
-      <button onClick={fbSignIn}>Sign in using Facebook</button>
+    <div style={{ textAlign: 'center' }} className="mt-3 container w-50">
+      <p style={{ color: 'red' }}>{user.error}</p>
+      { user.success && <p style={{ color: 'green' }}>User {newUser ? 'created' : 'Logged In'} successfully</p>}
       {
         user.isSignedIn && <div>
           <p>Welcome, {user.name}!</p>
           <p>Your email: {user.email}</p>
-          <img src={user.photo} alt=""/>
+          <img src={user.photo} alt="" />
         </div>
       }
-
       <h1>Our own Authentication</h1>
-      <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id=""/>
-      <label htmlFor="newUser">New User Sign up</label>
       <form onSubmit={handleSubmit}>
-        {newUser && <input name="name" type="text" onBlur={handleBlur} placeholder="Your name"/>}
-        <br/>
-        <input type="text" name="email" onBlur={handleBlur} placeholder="Your Email address" required/>
-        <br/>
-        <input type="password" name="password" onBlur={handleBlur} placeholder="Your Password" required/>
-        <br/>
-        <input type="submit" value={newUser ? 'Sign up' : 'Sign in'}/>
+        {newUser && <input className="form-control" name="name" type="text" onBlur={handleBlur} placeholder="Your name" />}
+        <br />
+        <input className="form-control" type="text" name="email" onBlur={handleBlur} placeholder="Your Email address" required />
+        <br />
+        <input className="form-control" type="password" name="password" onBlur={handleBlur} placeholder="Your Password" required />
+        <br />
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" />
+          <label htmlFor="newUser" class="form-check-label" for="exampleCheck1">New User Sign up</label>
+        </div>
+        <input className="btn btn-outline-warning" type="submit" value={newUser ? 'Sign up' : 'Sign in'} />
       </form>
-      <p style={{color: 'red'}}>{user.error}</p>
-      { user.success && <p style={{color: 'green'}}>User { newUser ? 'created' : 'Logged In'} successfully</p>}
+      <br />
+      {user.isSignedIn ? <button onClick={signOut}>Sign Out</button> :
+        <button className="btn btn-outline-warning" onClick={googleSignIn}>Sign In With google</button>
+      }
+      <div className="">
+        <button className="mt-3 btn btn-outline-warning" onClick={fbSignIn}>Sign in using Facebook</button>
+      </div>
     </div>
   );
 }
